@@ -9,7 +9,11 @@ app.use(express.static(path.join(__dirname, 'extra')));
 
 // GET endpoint pro zaslání index.html při vstupu na "/"
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'projekt', 'index.html'));
+    res.sendFile(path.join(__dirname, 'extra', 'index.html'));
+});
+
+app.get('/model', (req, res) => {
+    res.sendFile(path.join(__dirname, 'extra', 'orbitals.html'));
 });
 
 
