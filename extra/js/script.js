@@ -408,5 +408,35 @@ function draw() {
 
 //end draw --->
 
+function sendDataToServer() {
+  // Získání aktuálních hodnot
+  let dataToSend = {
+      NT_NUMBER: NT_NUMBER,
+      velocites: velocites,
+      orbits: orbits,
+      nummers: nummers
+  };
 
+  // Odeslání dat na server pomocí AJAX
+  fetch('/sendData', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataToSend)
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      return response.json();
+  })
+  .then(data => {
+      // Zpracování odpovědi od serveru
+      console.log('Response from server:', data);
+  })
+  .catch(error => {
+      console.error('There was a problem with your fetch operation:', error);
+  });
+}
   
