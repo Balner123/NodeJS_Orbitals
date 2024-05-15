@@ -141,6 +141,7 @@ function resetAnimation() {   //funkce pro znovu ačtení hodnot a nahraní hodn
   velocites = [];
   orbits = [];
   deflections = [];
+  nummers = [];
   
   scope = 0.5;
   accer = 1.0;
@@ -409,15 +410,13 @@ function draw() {
 //end draw --->
 
 function sendDataToServer() {
-  // Získání aktuálních hodnot
-  let dataToSend = {
+  const dataToSend = {
       NT_NUMBER: NT_NUMBER,
       velocites: velocites,
       orbits: orbits,
       nummers: nummers
   };
 
-  // Odeslání dat na server pomocí AJAX
   fetch('/sendData', {
       method: 'POST',
       headers: {
@@ -432,11 +431,8 @@ function sendDataToServer() {
       return response.json();
   })
   .then(data => {
-      // Zpracování odpovědi od serveru
       console.log('Response from server:', data);
   })
-  .catch(error => {
-      console.error('There was a problem with your fetch operation:', error);
-  });
+  
 }
   
