@@ -1,4 +1,5 @@
-
+const index = 1;
+fetchDataFromServer(index);
 //inicializace a vytvoření promněných , potřebných pro průběh programu
 
 let circleX;
@@ -377,9 +378,6 @@ function setup() {
 }
 
 //end setup canvas --->
-
-
-
 //draw --->
 
 function draw() {
@@ -435,4 +433,23 @@ function sendDataToServer() {
   })
   
 }
+
+function fetchDataFromServer(index) {
+  fetch(`/getData?index=${index}`)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+
+        NT_NUMBER = data.NT_NUMBER;
+        velocites = data.velocites;
+        orbits = data.orbits;
+        nummers = data.nummers;
+        })
+}
+
+
   
