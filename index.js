@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = 3000;
+let index = 0;
 
 app.use(express.static(path.join(__dirname, 'extra')));
 
@@ -36,19 +37,37 @@ app.post('/sendData', (req, res) => {
     });
 });
 
-app.get('/getData', (req, res) => {
+app.get('/nova', (req, res) => {
+    const idd = req.query.card;
+    index = idd;
+    console.log("NOVA");
+    res.json(index);
+});
+
+app.get('/getDataP', (req, res) => {
     fs.readFile('data.json', (err, data) => {
         if (err) {
             console.error('Error reading data from file:', err);
             return;
         }
         const jsonData = JSON.parse(data);
-        const index = req.query.index;
         const selectedObject = jsonData[index];
         res.json(selectedObject);
     });
 });
 
+
+
+app.get('/getData', (req, res) => {
+    fs.readFile('data.json', (err, data) => {
+        if (err) {
+            console.error('Error reading data file:', err);
+            return;
+        }
+        const jsonData = JSON.parse(data);
+        res.json(jsonData);
+    });
+});
 
 
 app.get('/', (req, res) => {

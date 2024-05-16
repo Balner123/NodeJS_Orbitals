@@ -1,29 +1,35 @@
 [
   {
+    "NT_NUMBER": 2,
+    "velocites": [
+      9.3,
+      21,
+      3,
+      4
+    ],
+    "orbits": [
+      100,
+      50,
+      20,
+      20
+    ],
+    "nummers": [
+      1,
+      1,
+      2,
+      1
+    ]
+  },
+  {
     "NT_NUMBER": "1",
     "velocites": [
-      "3"
+      "1"
     ],
     "orbits": [
       "100"
     ],
     "nummers": [
-      "3"
-    ]
-  },
-  {
-    "NT_NUMBER": "2",
-    "velocites": [
-      "3",
-      "-5"
-    ],
-    "orbits": [
-      "200",
-      "50"
-    ],
-    "nummers": [
-      "4",
-      "1"
+      "2"
     ]
   }
 ]
