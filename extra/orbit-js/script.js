@@ -1,6 +1,5 @@
-//inicializace a vytvoření promněných , potřebných pro průběh programu
 fetchDataFromServer();
-
+//inicializace a vytvoření promněných , potřebných pro průběh programu
 
 let circleX;
 let circleY;
@@ -19,13 +18,13 @@ let orbitals = [];  //pole objektů vytvořených kontruktorem
 
 let NT_NUMBER = 2;  //počet vrstev orbitalů (Start Count)
 
-let velocites = [3.1*3, 7*3,3,4];   //rychlosti
-let orbits = [100,50,20,20];        //vzdálenosti
-let nummers = [1,1,2,1];            //počet orbitalů na každý z vrstvy předchozí
+let velocites = [3.1*3, 7*3];   //rychlosti
+let orbits = [100,50];        //vzdálenosti
+let nummers = [1,1];            //počet orbitalů na každý z vrstvy předchozí
 let deflections = [0,0,0,0];
 
 //přednastavené modifikatory pro zvětšování , zrychlování a StrokeWeight
-let numberInputValue;
+let numberInputValue = 0;
 let scope = 0.85;   
 let accer = 0.25;
 let setW = 1.0;
@@ -69,7 +68,7 @@ class Orbital {       //třída Orbital << zakladní objekt v programu
     this.x;
     this.y;
     this.trail = [];
-    console.log(this.we, this.i,);  // pro potřebu kontroly...
+    console.log("Layer:",this.i+1 ,",","Orbital:", this.we+1);  // pro potřebu kontroly...
     
   }
 
@@ -137,6 +136,7 @@ class Orbital {       //třída Orbital << zakladní objekt v programu
 
 
 function resetAnimation() {   //funkce pro znovu ačtení hodnot a nahraní hodnot z formuláře
+  clearTrails();
   NT_NUMBER = numberInputValue;
   orbitals = [];
   velocites = [];
@@ -148,9 +148,6 @@ function resetAnimation() {   //funkce pro znovu ačtení hodnot a nahraní hodn
   accer = 1.0;
   setW=1.0;
   angleation=0;
-  onob = 1;
-  onmriz = 1;
-  colr = 1;
 
   for (var i = 0; i < NT_NUMBER; i++) {   //input z formuláře
     var orbi = 'orbit' + i;
@@ -351,6 +348,8 @@ function mriz(){
       }
       }
     }
+
+    vypis();
   }
   
   function fact(pocet){
@@ -378,6 +377,9 @@ function setup() {
 }
 
 //end setup canvas --->
+
+
+
 //draw --->
 
 function draw() {
@@ -404,6 +406,14 @@ function draw() {
   }
   pop();
 }
+
+//end draw --->
+function vypis(){
+  console.log("Objects_Orbitals: ",orbitals);
+  console.log("orbit_on_layer: ",nummers);
+  console.log("souradniceXY: ",centerx,centery);
+}
+
 
 //end draw --->
 
@@ -438,7 +448,7 @@ function sendDataToServer() {
 }
 
 
-function fetchDataFromServer(index) {
+function fetchDataFromServer() {
   fetch(`/getDataP`)
       .then(response => {
           if (!response.ok) {

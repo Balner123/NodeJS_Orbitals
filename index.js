@@ -40,7 +40,7 @@ app.post('/sendData', (req, res) => {
 app.get('/nova', (req, res) => {
     const idd = req.query.card;
     index = idd;
-    console.log("NOVA");
+    console.log("Redirect => ",index);
     res.json(index);
 });
 
@@ -55,8 +55,6 @@ app.get('/getDataP', (req, res) => {
         res.json(selectedObject);
     });
 });
-
-
 
 app.get('/getData', (req, res) => {
     fs.readFile('data.json', (err, data) => {
