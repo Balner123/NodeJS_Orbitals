@@ -363,7 +363,7 @@ function mriz(){
 //setup canvas --->
 
 function setup() {
-  createCanvas(windowWidth/1.75,windowHeight);
+  createCanvas(windowWidth/1.7,windowHeight/1);
   circleX = width / 2;
   circleY = height / 2;
 

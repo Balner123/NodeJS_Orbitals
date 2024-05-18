@@ -10,11 +10,10 @@ fetch('/getData')
       <a>
         <div class="card h-300 w-200" data-bs-toggle="modal" data-country="${index + 1}">
           <div class="card-body">
-            <h4 class="card-title">${index + 1}</h4>
-            <p>NT_NUMBER: ${karta.NT_NUMBER}</p>
-            <p>Velocities: ${karta.velocites.join(', ')}</p>
-            <p>Orbits: ${karta.orbits.join(', ')}</p>
-            <p>Nummers: ${karta.nummers.join(', ')}</p>
+            <h4 class="card-title">CreT:#${index + 1}</h4>
+            <p><b>Velocities:</b> ${karta.velocites.join(', ')}<br>
+            <b>Orbits:</b> ${karta.orbits.join(', ')}</p>
+            
           </div>
         </div>
       </div>`;

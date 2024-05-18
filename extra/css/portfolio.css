@@ -1,0 +1,57 @@
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+.card {
+    height: 150px; 
+    margin: 5px;
+    border-radius: 1%;
+    border: 1.5px solid rgb(0, 0, 0); /* Pevná šířka a výrazná barva okrajů */
+    background-color: #ffffff;
+    
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    background-color: #dddddd;
+    border-color: #ff0000; /* Změna barvy okraje při najetí myší */
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-img-top {
+    width: 50%; 
+    height: 100px;
+    object-fit: cover;  
+    border-radius: 50%;
+    align-self: center;
+    margin-top: 20px;
+}
+
+.card-title {
+    margin-bottom: 0;
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    text-align: center;
+}
+
+.card-text {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 400px) {
+    .card {
+        flex: 1 1 calc(100% - 20px); 
+        margin-right: 0;
+    }
+}
+
+.card-group{
+    align-items: center;
+    margin-top: 50px;
+}
