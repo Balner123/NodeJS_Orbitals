@@ -52,6 +52,7 @@ app.get('/getDataP', (req, res) => {
         }
         const jsonData = JSON.parse(data);
         const selectedObject = jsonData[index];
+        console.log(index);
         res.json(selectedObject);
     });
 });
