@@ -12,7 +12,9 @@ fetch('/getData')
           <div class="card-body">
             <h4 class="card-title">CreT:#${index + 1}</h4>
             <p><b>Velocities:</b> ${karta.velocites.join(', ')}<br>
-            <b>Orbits:</b> ${karta.orbits.join(', ')}</p>
+            <b>Orbits:</b> ${karta.orbits.join(', ')}<br>
+            <b>Orbitals_per_layer:</b> ${karta.nummers.join(', ')}
+            </p>
             
           </div>
         </div>
