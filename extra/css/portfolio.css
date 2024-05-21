@@ -5,7 +5,7 @@ h1 {
 }
 
 .card {
-    height: 150px; 
+    height: 250px; 
     margin: 5px;
     border-radius: 1%;
     border: 1.5px solid rgb(0, 0, 0); /* Pevná šířka a výrazná barva okrajů */
