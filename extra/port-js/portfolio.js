@@ -49,13 +49,17 @@ function sendDataToRoute(cardNumber) {
 }
 
 function deleteCard(cardIndex) {
+
+  const confirmed = confirm("Opravdu Smazat?");
+  if (confirmed) {
   fetch(`/delete?card=${cardIndex}`, {
     method: 'DELETE'
   })
     .then(() => {
       setTimeout(() => {
         location.reload();
-      }, 100);
+      }, 50);
     })
+  }
 }
 fetchDataAndRenderCards();

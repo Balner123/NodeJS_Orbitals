@@ -14,37 +14,5 @@
       1
     ],
     "timestamp": "2024-05-25"
-  },
-  {
-    "NT_NUMBER": 2,
-    "velocites": [
-      9.3,
-      21
-    ],
-    "orbits": [
-      100,
-      50
-    ],
-    "nummers": [
-      1,
-      1
-    ],
-    "timestamp": "2024-05-25"
-  },
-  {
-    "NT_NUMBER": 2,
-    "velocites": [
-      9.3,
-      21
-    ],
-    "orbits": [
-      100,
-      50
-    ],
-    "nummers": [
-      1,
-      1
-    ],
-    "timestamp": "2024-05-25"
   }
 ]
