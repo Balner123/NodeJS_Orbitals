@@ -68,6 +68,33 @@ app.get('/getData', (req, res) => {
     });
 });
 
+// Routa pro smazání záznamu
+app.delete('/delete', (req, res) => {
+    const cardIndex = req.query.card;
+
+    fs.readFile('data.json', (err, data) => {
+        if (err) {
+            console.error('Error reading data file:', err);
+            return;
+        }
+
+        let dataArray = JSON.parse(data);
+        dataArray.splice(cardIndex, 1);
+
+        fs.writeFile('data.json', JSON.stringify(dataArray, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing data to file:', err);
+                
+            } else {
+                console.log('Data successfully saved to data.json');
+            }
+        });
+    });
+    res.sendFile(path.join(__dirname, 'extra', 'index.html'));
+});
+
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'extra', 'index.html'));

@@ -340,7 +340,8 @@ function sendDataToServer() {
       NT_NUMBER: NT_NUMBER,
       velocites: velocites,
       orbits: orbits,
-      nummers: nummers
+      nummers: nummers,
+      timestamp: new Date().toISOString().split('T')[0]
     };
 
     fetch('/sendData', {
