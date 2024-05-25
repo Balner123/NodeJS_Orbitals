@@ -1,7 +1,10 @@
 h1 {
     text-align: center;
     text-decoration: underline;
-    margin-top: 10px;
+    padding: 150px 0px 50px 0px ;
+    background-image: url('../img/patterns.jpg');
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
 }
 
 .card {
@@ -54,4 +57,13 @@ h1 {
 .card-group{
     align-items: center;
     margin-top: 50px;
+}
+
+
+ul{
+    margin-left: 150px;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+    border: 0.5px solid rgb(0, 0, 0);
 }
