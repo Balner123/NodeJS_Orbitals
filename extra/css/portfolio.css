@@ -9,10 +9,11 @@ h1 {
 
 .card {
     position: relative;
-    height: 250px; 
+    height: 300px; 
+    
     margin: 5px;
     border-radius: 1%;
-    border: 1.5px solid rgb(0, 0, 0); /* Pevná šířka a výrazná barva okrajů */
+    border: 1.5px solid rgb(0, 0, 0); 
     background-color: #ffffff;
     
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -20,7 +21,7 @@ h1 {
 
 .card:hover {
     background-color: #dddddd;
-    border-color: #ff0000; /* Změna barvy okraje při najetí myší */
+    border-color: #ff0000; 
 }
 
 .card-body {
@@ -48,9 +49,9 @@ h1 {
     margin-bottom: 5px;
 }
 
-@media (max-width: 400px) {
+@media (max-width:400px) {
     .card {
-        flex: 1 1 calc(100% - 20px); 
+        flex: 1 1 calc(50% - 20px); 
         margin-right: 0;
     }
 }
@@ -59,7 +60,6 @@ h1 {
     align-items: center;
     margin-top: 50px;
 }
-
 
 ul{
     margin-left: 150px;

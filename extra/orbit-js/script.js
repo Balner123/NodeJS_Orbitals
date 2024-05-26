@@ -386,6 +386,7 @@ function sendDataToServer() {
         .then(data => {
           console.log('Response from server:', data);
           showModal("SUCCESS!", 500);
+          alert("SUCCESS!");
         })
         .catch(error => console.error('Error sending data:', error));
     } else {

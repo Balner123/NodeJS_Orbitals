@@ -8,7 +8,7 @@ function fetchDataAndRenderCards() {
       data.forEach((karta, index) => {
         let Orbital = `      
         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
-          <div class="card h-300 w-200" data-bs-toggle="modal" data-country="${index + 1}">
+          <div class="card h-300 w-300" data-bs-toggle="modal" data-country="${index + 1}">
             <div class="card-body">
               <h4 class="card-title">Cre:${karta.name}</h4>
               <p>${karta.timestamp}<br>
