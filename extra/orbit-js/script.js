@@ -68,10 +68,10 @@ class Orbital {
       
     if (this.i === NT_NUMBER - 1) {     
       this.trail.push(createVector(this.x, this.y));
-      if (this.trail.length > 10000) {  
+      if (this.trail.length > 8000) {  
         this.trail.shift();
       }
-    }
+  }
   }
 
   angles() {   
@@ -94,8 +94,8 @@ class Orbital {
     push();
     if (onob != 0) {
       fill(255, 255, 255);
-      ellipse(circleX, circleY, 20 * scope, 20 * scope);
-      ellipse(this.x, this.y, 5 * scope, 5 * scope);
+      ellipse(circleX, circleY, 20 , 20 );
+      ellipse(this.x, this.y, 5 , 5 );
       stroke(colr == 1 ? 0 : 255);
       strokeWeight(1.2);
       line(this.x, this.y, centerx[this.i][this.we], centery[this.i][this.we]);
@@ -244,7 +244,7 @@ function clearTrails() {
 }
 
 function drawTrail(trail) {
-  stroke(colr == 1 ? 0 : 255);
+  if(colr ==1){stroke(0);}else{stroke(255,255,0);}
   strokeWeight(setW);
   noFill();
   beginShape();
@@ -321,7 +321,7 @@ function draw() {
   fill(255);
   textAlign(LEFT, BOTTOM);
   for (let i = 0; i < NT_NUMBER; i++) {
-    text("Orbital" + i + " l=" + orbits[i] + " v=" + velocites[i] + " c=" + nummers[i] + ";", 30, height - 30 - i * 20);
+    text("Orbital" + i +  " v=" + velocites[i] + " l=" + orbits[i] +" c=" + nummers[i] + ";", 30, height - 30 - i * 20);
   }
   pop();
 }
@@ -333,9 +333,25 @@ function vypis() {
   console.log("souradniceXY: ", centerx, centery);
 }
 
+function showModal(message, duration) {
+  const modal = document.getElementById('modal');
+  const modalContent = modal.querySelector('.modal-content p');
+  modalContent.textContent = message;
+  modal.style.display = 'flex';
+
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, duration);
+}
+
+
+
 function sendDataToServer() {
   const confirmed = confirm("Opravdu Odeslat?");
   if (confirmed) {
+
+
+
     const dataToSend = {
       NT_NUMBER: NT_NUMBER,
       velocites: velocites,
@@ -361,6 +377,9 @@ function sendDataToServer() {
         console.log('Response from server:', data);
       })
       .catch(error => console.error('Error sending data:', error));
+
+
+      showModal("SUCCESS!",500);
   }
 }
 
@@ -377,6 +396,7 @@ function fetchDataFromServer() {
       velocites = data.velocites;
       orbits = data.orbits;
       nummers = data.nummers;
+      accer=0.5
     })
     .catch(error => console.error('Error fetching data:', error));
 }

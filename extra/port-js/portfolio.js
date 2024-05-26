@@ -48,18 +48,31 @@ function sendDataToRoute(cardNumber) {
     });
 }
 
-function deleteCard(cardIndex) {
 
-  const confirmed = confirm("Opravdu Smazat?");
-  if (confirmed) {
-  fetch(`/delete?card=${cardIndex}`, {
-    method: 'DELETE'
-  })
-    .then(() => {
-      setTimeout(() => {
-        location.reload();
-      }, 50);
-    })
-  }
+
+
+function deleteCard(cardIndex) {
+  
+    const confirmed = confirm("Opravdu Smazat?");
+    if (confirmed) {
+
+      const password = prompt("Please enter the password:");
+  if (password === "admin") {
+      fetch(`/delete?card=${cardIndex}`, {
+        method: 'DELETE'
+      })
+        .then(() => {
+          setTimeout(() => {
+            location.reload();
+          }, 50);
+        })
+        .catch((error) => {
+          console.error('Error deleting card:', error);
+        });
+      } else {
+        alert("Incorrect password.");
+      }
+    }
+ 
 }
 fetchDataAndRenderCards();
