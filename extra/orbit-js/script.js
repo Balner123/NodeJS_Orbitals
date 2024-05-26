@@ -349,39 +349,51 @@ function showModal(message, duration) {
 function sendDataToServer() {
   const confirmed = confirm("Opravdu Odeslat?");
   if (confirmed) {
+    const name = prompt("Zadejte název:");
 
+    if (name !== null && name.trim() !== '') {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1; // Months are zero-based
+      const day = now.getDate();
+      const hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const timestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
+      const dataToSend = {
+        NT_NUMBER: NT_NUMBER,
+        velocites: velocites,
+        orbits: orbits,
+        nummers: nummers,
+        timestamp: timestamp,
+        name: name
+      };
 
-    const dataToSend = {
-      NT_NUMBER: NT_NUMBER,
-      velocites: velocites,
-      orbits: orbits,
-      nummers: nummers,
-      timestamp: new Date().toISOString().split('T')[0]
-    };
-
-    fetch('/sendData', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(dataToSend)
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
+      fetch('/sendData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
       })
-      .then(data => {
-        console.log('Response from server:', data);
-      })
-      .catch(error => console.error('Error sending data:', error));
-
-
-      showModal("SUCCESS!",500);
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Response from server:', data);
+          showModal("SUCCESS!", 500);
+        })
+        .catch(error => console.error('Error sending data:', error));
+    } else {
+      alert("Název nebyl zadán, data nebudou odeslána.");
+    }
   }
 }
+
 
 function fetchDataFromServer() {
   return fetch(`/getDataP`)

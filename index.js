@@ -19,17 +19,17 @@ app.post('/sendData', (req, res) => {
     fs.readFile('data.json', (err, data) => {
         if (err) {
             console.error('Error reading data file:', err);
-            res.status(500).json({ error: 'An error occurred while reading data file' });
             return;
         }
 
         let dataArray = JSON.parse(data);
         dataArray.push(receivedData);
 
+        dataArray.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
         fs.writeFile('data.json', JSON.stringify(dataArray, null, 2), (err) => {
             if (err) {
                 console.error('Error writing data to file:', err);
-                res.status(500).json({ error: 'An error occurred while saving data to file' });
             } else {
                 console.log('Data successfully saved to data.json');
             }
