@@ -1,9 +1,9 @@
 ## Orbitals_Model 
 * Node.JS (portation)
-* Portfolio_Send-Delete
+* Portfolio_Send-Delete_functionality
 
 ---
 
-Keoyb => [https://keob-git-sspu-opava-47494cd6.koyeb.app/](https://keob-git-sspu-opava-47494cd6.koyeb.app/)
+Render => (https://nodejs-orbitals.onrender.com)
 
 > Delay can be up to 50s...
