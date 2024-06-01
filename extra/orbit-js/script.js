@@ -347,9 +347,9 @@ function showModal(message, duration) {
 
 
 function sendDataToServer() {
-  const confirmed = confirm("Opravdu Odeslat?");
+  const confirmed = confirm("Ready to Send?");
   if (confirmed) {
-    const name = prompt("Zadejte název:");
+    const name = prompt("Enter name of Curve:");
 
     if (name !== null && name.trim() !== '') {
       const now = new Date();
@@ -390,7 +390,7 @@ function sendDataToServer() {
         })
         .catch(error => console.error('Error sending data:', error));
     } else {
-      alert("Název nebyl zadán, data nebudou odeslána.");
+      alert("Enter name ! Data weren't send.");
     }
   }
 }

@@ -53,11 +53,11 @@ function sendDataToRoute(cardNumber) {
 
 function deleteCard(cardIndex) {
   
-    const confirmed = confirm("Opravdu Smazat?");
+    const confirmed = confirm("Ready to Delete?");
     if (confirmed) {
 
       const password = prompt("Please enter the password:");
-  if (password === "admin") {
+  if (password === "abc123") { //hello here ! you noob !
       fetch(`/delete?card=${cardIndex}`, {
         method: 'DELETE'
       })
