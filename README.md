@@ -1,6 +1,8 @@
-# Orbitals_Model 
+>>>>Warning: My english is on low level and language too
 
-This project is try to graphic represent "_Orbitals Curves_" and it can be getting as "_Fourier Transformation_" (in extra-minimal-bad sense).
+# Orbitals_Model
+
+This project is try to graphic represent "_Orbital Curves_" and it can be getting as visualisation of "_Fourier Transformation_" (in extra-minimal-bad sense).
 
 Base of this try is [script.js] in which _madness is hiding on every corner, and where _recursive fucntions_ have blocked access_.
 * It's simple **JavaSript** with **p5.js** library for rendering Canvas
@@ -31,8 +33,6 @@ In <code>/portfolio </code> afterwards you will able to click on the CARD with t
 3. in console <code>npm install</code>
 4. <code>node index.js</code>
 5. Now is Service running on <code>/localhost:3000</code>
-
->This is stupid mess for non-pc-agitated
 
 ---
 ## used-technology
