@@ -1,6 +1,6 @@
 # Orbitals_Model 
 
-This project is try to graphic represent "_Fourier Curves_" (in extra-minimal-bad sense).
+This project is try to graphic represent "_Orbitals Curves_" and it can be getting as "_Fourier Transformation_" (in extra-minimal-bad sense).
 
 Base of this try is [script.js] in which _madness is hiding on every corn, and where _recursive fucntions_ have blocked access_.
 * It's simple **JavaSript** with **p5.js** library for rendering Canvas
