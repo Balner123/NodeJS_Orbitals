@@ -5,7 +5,7 @@ let centerx = []; // Array to hold X-coordinates of centers of orbitals
 let centery = []; // Array to hold Y-coordinates of centers of orbitals
 
 // Initialize centerx and centery arrays with empty arrays for 10 layers
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 20; i++) {
   centerx.push([]);
   centery.push([]);
 }
