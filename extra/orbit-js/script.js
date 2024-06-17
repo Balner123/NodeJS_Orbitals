@@ -240,4 +240,199 @@ function chanWei(na) {
 }
 
 // Adjust rotation
-functio
+function plusrot(na) {
+  if (na == 0) {
+    angleation += 45;
+  } else {
+    angleation -= 45;
+  }
+  rotDisplay.textContent = `(${angleation}°)`;
+  clearTrails();
+  orbitals = [];
+  setOrbitals();
+}
+
+// Clear all trails
+function clearTrails() {
+  for (let i = 0; i < orbitals.length; i++) {
+    orbitals[i].trail = [];
+  }
+}
+
+// Draw the trail of the orbital
+function drawTrail(trail) {
+  if (colr == 1) { stroke(0); } else { stroke(255, 255, 0); }
+  strokeWeight(setW);
+  noFill();
+  beginShape();
+  for (let i = 0; i < trail.length; i++) {
+    vertex(trail[i].x, trail[i].y);
+  }
+  endShape();
+}
+
+// Draw the grid
+function mriz() {
+  let mez = 20;
+  stroke(colr == 1 ? 0 : 255);
+  strokeWeight(0.1);
+  for (let i = 0; i < height / mez; i++) {
+    line(0, height / 2 + (i * mez), width, height / 2 + (i * mez));
+    line(0, height / 2 - (i * mez), width, height / 2 - (i * mez));
+  }
+  for (let i = 0; i < width / mez; i++) {
+    line(width / 2 + (i * mez), 0, width / 2 + (i * mez), height);
+    line(width / 2 - (i * mez), 0, width / 2 - (i * mez), height);
+  }
+  strokeWeight(1.5);
+}
+
+// Set orbitals based on the current configuration
+function setOrbitals() {
+  let de = 0;
+  for (let i = 0; i < NT_NUMBER; i++) {
+    de = fact(i);
+    if (i < 1) {
+      for (let v = 0; v < nummers[i]; v++) {
+        orbitals.push(new Orbital(i, (360 / nummers[i] * v) + angleation, v));
+      }
+    } else {
+      for (let v = 0; v < de; v++) {
+        orbitals.push(new Orbital(i, (360 / nummers[i] * v) + angleation, v));
+      }
+    }
+  }
+  vypis();
+}
+
+// Calculate factorial for setting orbitals
+function fact(pocet) {
+  var faktor = 1;
+  for (let d = 0; d < pocet + 1; d++) {
+    faktor = faktor * nummers[d];
+  }
+  return faktor;
+}
+
+// Setup function to initialize the canvas and orbitals
+function setup() {
+  fetchDataFromServer().then(() => {
+    createCanvas(windowWidth / 1.7, windowHeight / 1);
+    circleX = width / 2;
+    circleY = height / 2;
+    for (let i = 0; i < nummers[0]; i++) {
+      centerx[0][i] = circleX;
+      centery[0][i] = circleY;
+    }
+    setOrbitals();
+  }).catch(error => console.error("Error fetching data:", error));
+}
+
+// Draw function to render the orbitals and other elements
+function draw() {
+  background(colr == 1 ? 255 : 0);
+  if (onmriz != 0) {
+    mriz();
+  }
+  fill(255, 255, 255);
+  orbitals.forEach(function (orbital) {
+    orbital.draw();
+  });
+  push();
+  textSize(20);
+  fill(255);
+  textAlign(LEFT, BOTTOM);
+  for (let i = 0; i < NT_NUMBER; i++) {
+    text("Orbital" + i +  " v=" + velocites[i] + " l=" + orbits[i] +" c=" + nummers[i] + ";", 30, height - 30 - i * 20);
+  }
+  pop();
+}
+
+// Log the current configuration to the console
+function vypis() {
+  console.log("NT_NUMBER :", NT_NUMBER);
+  console.log("Objects_Orbitals: ", orbitals);
+  console.log("orbit_on_layer: ", nummers);
+  console.log("souradniceXY: ", centerx, centery);
+}
+
+// Show a modal with a message for a specified duration
+function showModal(message, duration) {
+  const modal = document.getElementById('modal');
+  const modalContent = modal.querySelector('.modal-content p');
+  modalContent.textContent = message;
+  modal.style.display = 'flex';
+
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, duration);
+}
+
+// Send data to the server
+function sendDataToServer() {
+  const confirmed = confirm("Ready to Send?");
+  if (confirmed) {
+    const name = prompt("Enter name of Curve:");
+
+    if (name !== null && name.trim() !== '') {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1; // Months are zero-based
+      const day = now.getDate();
+      const hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const timestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+      const dataToSend = {
+        NT_NUMBER: NT_NUMBER,
+        velocites: velocites,
+        orbits: orbits,
+        nummers: nummers,
+        timestamp: timestamp,
+        name: name
+      };
+
+      fetch('/sendData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Response from server:', data);
+          showModal("SUCCESS!", 500);
+          alert("SUCCESS!");
+        })
+        .catch(error => console.error('Error sending data:', error));
+    } else {
+      alert("Enter name! Data weren't sent.");
+    }
+  }
+}
+
+// Fetch data from the server
+function fetchDataFromServer() {
+  return fetch(`/getDataP`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      NT_NUMBER = data.NT_NUMBER;
+      velocites = data.velocites;
+      orbits = data.orbits;
+      nummers = data.nummers;
+      accer = 0.5;
+    })
+    .catch(error => console.error('Error fetching data:', error));
+}
