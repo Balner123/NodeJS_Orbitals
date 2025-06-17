@@ -4,11 +4,11 @@
 
 This project is a try to graphicly represent so called "_Orbital Curves_" and it can be get as visualisation of "_Fourier Transformation_" (in extra-minimal-bad sense).
 
-Base of this try is [script.js] in which _madness is hiding on every corner.
+Base of this try is [script.js] in which _madness is hiding on every corner_.
 * It's simple **JavaSript** with **p5.js** library for rendering Canvas
 
 > I won't give any Advices like "How to use" that script, because those which are curious about "how it works?" will find it out fast in any case,
-and these those not will be drive away faster too...
+and these who do not, will be driven away faster too...
 
 ## Portfolio
 > is different thing (obviously). This portfolio is supposed to collect Parameters of these curves, which "_gained visitor's attention for its Beauty or Speciality_"
