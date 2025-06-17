@@ -4,7 +4,7 @@
 
 This project is a try to graphicly represent so called "_Orbital Curves_" and it can be get as visualisation of "_Fourier Transformation_" (in extra-minimal-bad sense).
 
-Base of this try is [script.js] in which _madness is hiding on every corner, and where _recursive fucntions_ have blocked access_.
+Base of this try is [script.js] in which _madness is hiding on every corner.
 * It's simple **JavaSript** with **p5.js** library for rendering Canvas
 
 > I won't give any Advices like "How to use" that script, because those which are curious about "how it works?" will find it out fast in any case,
